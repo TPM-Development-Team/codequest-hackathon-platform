@@ -1,0 +1,46 @@
+---
+import { Image } from "astro:assets";
+import logo from "../../assets/logo.png";
+---
+
+<div class="navbar">
+  <div class="logo">
+    <Image src={logo} alt="logo" width={100} />
+  </div>
+  <div class="links">
+    <a href="#about">About</a>
+    <a href="#faq">FAQ</a>
+    <a href="#mentors">Mentor & Jury</a>
+    <a href="#prize">Prize</a>
+    <a href="#timeline">Timeline</a>
+    <a href="#login">Login</a>
+  </div>
+</div>
+
+<style>
+  .navbar {
+    display: flex;
+    justify-content: space-between;
+    background-color: rgba(255, 255, 255, 0.5);
+    height: 110px;
+    padding: 0 2rem;
+  }
+
+  .logo {
+    display: flex;
+    align-items: center;
+  }
+
+  .links {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    font-size: 1.2rem;
+  }
+
+  .links a {
+    text-decoration: none;
+    color: black;
+    font-family: "Pixelify Sans", sans-serif;
+  }
+</style>
