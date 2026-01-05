@@ -1,0 +1,68 @@
+---
+import { Image } from "astro:assets";
+import sign from "../../assets/bird.png";
+---
+
+<section class="hero">
+  <figure class="sign">
+    <Image src={sign} alt="Wooden sign" width={800} />
+
+    <header class="content">
+      <h1>"Code Quest: The Trial of the Digital Realm"</h1>
+      <p>
+        By order of the realm, all clever and daring minds are summoned to enter
+        a pixel-forged dungeon and craft ingenious works of technology to
+        conquer the trials of the modern world.
+      </p>
+      <p class="event-meta">
+        Held online | Entries accepted until 8th February, 2026
+      </p>
+    </header>
+  </figure>
+</section>
+
+<style>
+  .hero {
+    min-height: 100vh;
+    display: grid;
+    place-items: center;
+  }
+
+  .sign {
+    position: relative;
+    display: inline-block;
+    margin: 0;
+  }
+
+  .sign img {
+    display: block;
+  }
+
+  .content {
+    position: absolute;
+    inset: 8rem 0 0 0;
+    padding: 3rem;
+    box-sizing: border-box;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .content h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    font-family: "Parisienne", cursive;
+  }
+
+  .content p {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    font-family: "Palatino Linotype", sans-serif;
+  }
+
+  .event-meta {
+    font-size: 1rem;
+    font-weight: bold;
+  }
+</style>

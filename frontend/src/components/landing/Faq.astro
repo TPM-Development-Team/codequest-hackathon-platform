@@ -1,0 +1,148 @@
+---
+import { Image } from "astro:assets";
+import text_bubble from "../../assets/text_bubble.png";
+import down_arrow from "../../assets/chevron-down.svg";
+
+const questions = [
+  {
+    question: "Q: What are the themes for this hackathon?",
+    answer:
+      "A: Social Impact, Fintech & Business, Future Tech, and Creative Design",
+  },
+  {
+    question: "Q: What are the themes for this hackathon?",
+    answer:
+      "A: Social Impact, Fintech & Business, Future Tech, and Creative Design",
+  },
+  {
+    question: "Q: What are the themes for this hackathon?",
+    answer:
+      "A: Social Impact, Fintech & Business, Future Tech, and Creative Design",
+  },
+  {
+    question: "Q: What are the themes for this hackathon?",
+    answer:
+      "A: Social Impact, Fintech & Business, Future Tech, and Creative Design",
+  },
+  {
+    question: "Q: What are the themes for this hackathon?",
+    answer:
+      "A: Social Impact, Fintech & Business, Future Tech, and Creative Design",
+  },
+  {
+    question: "Q: What are the themes for this hackathon?",
+    answer:
+      "A: Social Impact, Fintech & Business, Future Tech, and Creative Design",
+  },
+];
+---
+
+<div class="grid" id="faq">
+  {
+    questions.map((item, index) => (
+      <div class="text_bubble" data-index={index}>
+        <Image src={text_bubble} alt="text_bubble" width={320} />
+        <div class="question">
+          <span class="text">{item.question}</span>
+          <button class="arrow-btn">
+            <Image src={down_arrow} alt="down_arrow" width={30} />
+          </button>
+        </div>
+        <div class="answer hidden">
+          <span class="text">{item.answer}</span>
+          <button class="arrow-btn up">
+            <Image src={down_arrow} alt="up_arrow" width={30} />
+          </button>
+        </div>
+      </div>
+    ))
+  }
+</div>
+
+<style>
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    height: 55vh;
+    margin-bottom: 10vh;
+    margin: auto 4rem;
+    item-align: center;
+  }
+
+  .text_bubble {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+  }
+
+  .question,
+  .answer {
+    position: absolute;
+    inset: 0 6% 2rem 6%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-family: "Pixelify Sans", sans-serif;
+    font-size: 1.2rem;
+    gap: 0.5rem;
+    transition: opacity 0.3s ease;
+  }
+
+  .answer {
+    opacity: 0;
+    pointer-events: none;
+    color: #db349d;
+  }
+
+  .answer.show {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .question.hidden {
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .arrow-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s ease;
+  }
+
+  .arrow-btn:hover {
+    transform: scale(1.1);
+  }
+
+  .arrow-btn.up {
+    transform: rotate(180deg);
+  }
+
+  .arrow-btn.up:hover {
+    transform: rotate(180deg) scale(1.1);
+  }
+</style>
+
+<script>
+  document.querySelectorAll(".text_bubble").forEach((bubble) => {
+    const question = bubble.querySelector(".question");
+    const answer = bubble.querySelector(".answer");
+    const arrows = bubble.querySelectorAll(".arrow-btn");
+
+    arrows.forEach((arrow) => {
+      arrow.addEventListener("click", () => {
+        question?.classList.toggle("hidden");
+        answer?.classList.toggle("show");
+      });
+    });
+  });
+</script>
