@@ -1,29 +1,39 @@
 ---
-const prizes = [
+const timeline = [
   {
-    rank: "1st",
-    prize: "Rp 8 million",
-    position: { top: "13%", left: "43%", width: "25%", height: "55%" },
+    event: "Registration Close",
+    date: "8 February 2026",
+    position: { top: "28%", left: "3.5%", width: "18%", height: "55%" },
   },
   {
-    rank: "2nd",
-    prize: "Rp 2 million",
-    position: { top: "20%", left: "10%", width: "25%", height: "55%" },
+    event: "Technical Meeting",
+    date: "9 February 2026",
+    position: { top: "28%", left: "22.5%", width: "18%", height: "55%" },
   },
   {
-    rank: "3rd",
-    prize: "Rp 0.8 million",
-    position: { top: "20%", left: "75%", width: "25%", height: "55%" },
+    event: "Hacking Session",
+    date: "10-17 February 2026",
+    position: { top: "28%", left: "42%", width: "18%", height: "55%" },
+  },
+  {
+    event: "Final Submission",
+    date: "18 February 2026",
+    position: { top: "28%", left: "62%", width: "18%", height: "55%" },
+  },
+  {
+    event: "Pitching and Judging",
+    date: "19 February 2026",
+    position: { top: "28%", left: "82%", width: "18%", height: "55%" },
   },
 ];
 ---
 
-<div class="prize-container" id="prize">
-  <h1>Prize</h1>
+<div class="timeline-container" id="timeline">
+  <h1>Timeline</h1>
 
   <div class="image-wrapper">
     {
-      prizes.map((prize) => (
+      timeline.map((prize) => (
         <div
           class="hotspot"
           style={`
@@ -34,8 +44,8 @@ const prizes = [
           `}
         >
           <div class="prize-info">
-            <h3>{prize.rank}</h3>
-            <p>{prize.prize}</p>
+            <h3>{prize.event}</h3>
+            <p>{prize.date}</p>
           </div>
         </div>
       ))
@@ -44,28 +54,28 @@ const prizes = [
 </div>
 
 <style>
-  .prize-container {
+  .timeline-container {
     width: 100%;
-    height: 66vh;
+    height: 60vh;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
   }
 
-  .prize-container h1 {
+  .timeline-container h1 {
     font-family: "Pixelify Sans", sans-serif;
     font-size: 4rem;
     margin: 0;
     color: #f7d028;
-    margin-bottom: 10vh;
+    margin-bottom: 16vh;
   }
 
   .image-wrapper {
     position: relative;
     display: inline-block;
-    height: 40vh;
-    width: 30vw;
+    height: 25vh;
+    width: 55vw;
   }
 
   .hotspot {
@@ -88,24 +98,24 @@ const prizes = [
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
     color: white;
     text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.9);
     font-family: "Pixelify Sans", sans-serif;
-    white-space: nowrap;
+    text-align: center;
   }
 
   .prize-info h3 {
     margin: 0 0 2px 0;
-    font-size: 2rem;
+    font-size: 1.2rem;
   }
 
   .prize-info p {
     margin: 0;
-    font-size: 1.4rem;
+    font-size: 1rem;
     opacity: 0;
     transition: opacity 0.3s;
     pointer-events: none;
+    white-space: nowrap;
   }
 
   .hotspot:hover .prize-info p {
