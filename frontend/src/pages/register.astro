@@ -1,7 +1,7 @@
 ---
-import StepGroup from "../../components/register/StepGroup.astro";
-import StepLeader from "../../components/register/StepLeader.astro";
-import "../../styles/login-register.css";
+import StepGroup from "../components/register/StepGroup.astro";
+import StepLeader from "../components/register/StepLeader.astro";
+import "../styles/login-register.css";
 ---
 
 <!doctype html>
@@ -42,12 +42,11 @@ import "../../styles/login-register.css";
               Sign Up
             </button>
           </div>
-
         </form>
       </main>
 
       <!-- SEMUA JS HARUS DI DALAM SATU SCRIPT -->
-       
+
       <script is:inline>
         document.addEventListener("DOMContentLoaded", () => {
           const form = document.querySelector(".register-form");
@@ -439,7 +438,7 @@ import "../../styles/login-register.css";
 
           updateStepUI();
 
-           // BIRTH PLACE DROPDOWN
+          // BIRTH PLACE DROPDOWN
           const cities = [
             "Jakarta",
             "Bandung",
