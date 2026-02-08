@@ -1,0 +1,131 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Dashboard">
+  <main class="dashboard-container">
+    <div class="glass-card">
+      <h1>Welcome, <span id="groupNameDisp">...</span>!</h1>
+      <p class="status-badge" id="teamStatus">...</p>
+      
+      <div class="info-grid">
+        <div class="info-item">
+          <label>Leader Name</label>
+          <p id="leaderName">...</p>
+        </div>
+        <div class="info-item">
+          <label>Email</label>
+          <p id="leaderEmail">...</p>
+        </div>
+        <div class="info-item">
+          <label>WhatsApp</label>
+          <p id="whatsapp">...</p>
+        </div>
+        <div class="info-item">
+          <label>Role</label>
+          <p id="userRole">...</p>
+        </div>
+      </div>
+
+      <div class="actions">
+        <button id="logoutBtn" class="danger-btn">Logout</button>
+      </div>
+    </div>
+  </main>
+</Layout>
+
+<style>
+  .dashboard-container {
+    padding: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 80vh;
+    font-family: 'Pixelify Sans', sans-serif;
+  }
+  .glass-card {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 2rem;
+    border-radius: 1rem;
+    color: white;
+    width: 100%;
+    max-width: 600px;
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+  }
+  h1 { color: #f7d028; margin-bottom: 0.5rem; }
+  .status-badge {
+    background: #db349d;
+    display: inline-block;
+    padding: 0.2rem 0.8rem;
+    border-radius: 1rem;
+    font-size: 0.9rem;
+    margin-bottom: 2rem;
+  }
+  .info-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+  }
+  .info-item label {
+    display: block;
+    font-size: 0.8rem;
+    opacity: 0.7;
+    margin-bottom: 0.2rem;
+  }
+  .info-item p { font-size: 1.1rem; }
+  .actions { text-align: right; }
+  .danger-btn {
+    background: #ff4757;
+    border: none;
+    color: white;
+    padding: 0.5rem 1.5rem;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    font-family: inherit;
+  }
+</style>
+
+<script is:inline>
+  async function initDashboard() {
+    const token = localStorage.getItem('token');
+    if (!token) {
+      window.location.href = '/login';
+      return;
+    }
+
+    try {
+      const res = await fetch('http://localhost:5001/api/dashboard', {
+        headers: {
+          'Authorization': `Bearer ${token}`
+        }
+      });
+
+      if (!res.ok) throw new Error('Unauthorized');
+
+      const data = await res.json();
+      
+      document.getElementById('groupNameDisp').textContent = data.groupName;
+      document.getElementById('teamStatus').textContent = data.status;
+      document.getElementById('leaderName').textContent = data.leader?.fullName || 'N/A';
+      document.getElementById('leaderEmail').textContent = data.leader?.email || 'N/A';
+      document.getElementById('whatsapp').textContent = data.leader?.whatsappNumber || 'N/A';
+      document.getElementById('userRole').textContent = data.role;
+
+    } catch (err) {
+      console.error(err);
+      localStorage.removeItem('token');
+      window.location.href = '/login';
+    }
+  }
+
+  document.getElementById('logoutBtn').addEventListener('click', () => {
+    localStorage.removeItem('token');
+    localStorage.removeItem('team');
+    window.location.href = '/login';
+  });
+
+  initDashboard();
+</script>

@@ -1,0 +1,202 @@
+
+> backend@1.0.0 dev
+> nodemon index.js
+
+[33m[nodemon] 3.1.11[39m
+[33m[nodemon] to restart at any time, enter `rs`[39m
+[33m[nodemon] watching path(s): *.*[39m
+[33m[nodemon] watching extensions: js,mjs,cjs,json[39m
+[32m[nodemon] starting `node index.js`[39m
+[dotenv@17.2.4] injecting env (5) from .env -- tip: ⚙️  specify custom .env file path with { path: '/custom/path/.env' }
+Server listening on http://localhost:5001
+Error fetching content: PrismaClientUnknownRequestError: 
+Invalid `prisma.faq.findMany()` invocation in
+/Users/rafkiyuda/Documents/Source/codequest-hackathon-platform/backend/routes/content.js:10:24
+
+   7 router.get('/', async (req, res) => {
+   8     try {
+   9         const [faqs, mentors, prizes, timelines, socials] = await Promise.all([
+→ 10             prisma.faq.findMany(
+Error in connector: Error querying the database: FATAL: MaxClientsInSessionMode: max clients reached - in Session mode max clients are limited to pool_size
+    at $n.handleRequestError (/Users/rafkiyuda/Documents/Source/codequest-hackathon-platform/backend/node_modules/@prisma/client/runtime/library.js:121:7505)
+    at $n.handleAndLogRequestError (/Users/rafkiyuda/Documents/Source/codequest-hackathon-platform/backend/node_modules/@prisma/client/runtime/library.js:121:6623)
+    at $n.request (/Users/rafkiyuda/Documents/Source/codequest-hackathon-platform/backend/node_modules/@prisma/client/runtime/library.js:121:6307)
+    at async l (/Users/rafkiyuda/Documents/Source/codequest-hackathon-platform/backend/node_modules/@prisma/client/runtime/library.js:130:9633)
+    at async Promise.all (index 0)
+    at async /Users/rafkiyuda/Documents/Source/codequest-hackathon-platform/backend/routes/content.js:9:61 {
+  clientVersion: '5.22.0'
+}
+Error fetching content: PrismaClientUnknownRequestError: 
+Invalid `prisma.prize.findMany()` invocation in
+/Users/rafkiyuda/Documents/Source/codequest-hackathon-platform/backend/routes/content.js:12:26
+
+   9 const [faqs, mentors, prizes, timelines, socials] = await Promise.all([
+  10     prisma.faq.findMany({ orderBy: { order: 'asc' } }),
+  11     prisma.mentor.findMany({ orderBy: { order: 'asc' } }),
+→ 12     prisma.prize.findMany(
+Error in connector: Error querying the database: FATAL: MaxClientsInSessionMode: max clients reached - in Session mode max clients are limited to pool_size
+    at $n.handleRequestError (/Users/rafkiyuda/Documents/Source/codequest-hackathon-platform/backend/node_modules/@prisma/client/runtime/library.js:121:7505)
+    at $n.handleAndLogRequestError (/Users/rafkiyuda/Documents/Source/codequest-hackathon-platform/backend/node_modules/@prisma/client/runtime/library.js:121:6623)
+    at $n.request (/Users/rafkiyuda/Documents/Source/codequest-hackathon-platform/backend/node_modules/@prisma/client/runtime/library.js:121:6307)
+    at async l (/Users/rafkiyuda/Documents/Source/codequest-hackathon-platform/backend/node_modules/@prisma/client/runtime/library.js:130:9633)
+    at async Promise.all (index 2)
+    at async /Users/rafkiyuda/Documents/Source/codequest-hackathon-platform/backend/routes/content.js:9:61 {
+  clientVersion: '5.22.0'
+}
+Error fetching content: PrismaClientUnknownRequestError: 
+Invalid `prisma.faq.findMany()` invocation in
+/Users/rafkiyuda/Documents/Source/codequest-hackathon-platform/backend/routes/content.js:10:24
+
+   7 router.get('/', async (req, res) => {
+   8     try {
+   9         const [faqs, mentors, prizes, timelines, socials] = await Promise.all([
+→ 10             prisma.faq.findMany(
+Error in connector: Error querying the database: FATAL: MaxClientsInSessionMode: max clients reached - in Session mode max clients are limited to pool_size
+    at $n.handleRequestError (/Users/rafkiyuda/Documents/Source/codequest-hackathon-platform/backend/node_modules/@prisma/client/runtime/library.js:121:7505)
+    at $n.handleAndLogRequestError (/Users/rafkiyuda/Documents/Source/codequest-hackathon-platform/backend/node_modules/@prisma/client/runtime/library.js:121:6623)
+    at $n.request (/Users/rafkiyuda/Documents/Source/codequest-hackathon-platform/backend/node_modules/@prisma/client/runtime/library.js:121:6307)
+    at async l (/Users/rafkiyuda/Documents/Source/codequest-hackathon-platform/backend/node_modules/@prisma/client/runtime/library.js:130:9633)
+    at async Promise.all (index 0)
+    at async /Users/rafkiyuda/Documents/Source/codequest-hackathon-platform/backend/routes/content.js:9:61 {
+  clientVersion: '5.22.0'
+}
+Error fetching content: PrismaClientUnknownRequestError: 
+Invalid `prisma.social.findMany()` invocation in
+/Users/rafkiyuda/Documents/Source/codequest-hackathon-platform/backend/routes/content.js:14:27
+
+  11 prisma.mentor.findMany({ orderBy: { order: 'asc' } }),
+  12 prisma.prize.findMany({ orderBy: { order: 'asc' } }),
+  13 prisma.timeline.findMany({ orderBy: { order: 'asc' } }),
+→ 14 prisma.social.findMany(
+Error in connector: Error querying the database: FATAL: MaxClientsInSessionMode: max clients reached - in Session mode max clients are limited to pool_size
+    at $n.handleRequestError (/Users/rafkiyuda/Documents/Source/codequest-hackathon-platform/backend/node_modules/@prisma/client/runtime/library.js:121:7505)
+    at $n.handleAndLogRequestError (/Users/rafkiyuda/Documents/Source/codequest-hackathon-platform/backend/node_modules/@prisma/client/runtime/library.js:121:6623)
+    at $n.request (/Users/rafkiyuda/Documents/Source/codequest-hackathon-platform/backend/node_modules/@prisma/client/runtime/library.js:121:6307)
+    at async l (/Users/rafkiyuda/Documents/Source/codequest-hackathon-platform/backend/node_modules/@prisma/client/runtime/library.js:130:9633)
+    at async Promise.all (index 4)
+    at async /Users/rafkiyuda/Documents/Source/codequest-hackathon-platform/backend/routes/content.js:9:61 {
+  clientVersion: '5.22.0'
+}
+Error fetching content: PrismaClientUnknownRequestError: 
+Invalid `prisma.social.findMany()` invocation in
+/Users/rafkiyuda/Documents/Source/codequest-hackathon-platform/backend/routes/content.js:14:27
+
+  11 prisma.mentor.findMany({ orderBy: { order: 'asc' } }),
+  12 prisma.prize.findMany({ orderBy: { order: 'asc' } }),
+  13 prisma.timeline.findMany({ orderBy: { order: 'asc' } }),
+→ 14 prisma.social.findMany(
+Error in connector: Error querying the database: FATAL: MaxClientsInSessionMode: max clients reached - in Session mode max clients are limited to pool_size
+    at $n.handleRequestError (/Users/rafkiyuda/Documents/Source/codequest-hackathon-platform/backend/node_modules/@prisma/client/runtime/library.js:121:7505)
+    at $n.handleAndLogRequestError (/Users/rafkiyuda/Documents/Source/codequest-hackathon-platform/backend/node_modules/@prisma/client/runtime/library.js:121:6623)
+    at $n.request (/Users/rafkiyuda/Documents/Source/codequest-hackathon-platform/backend/node_modules/@prisma/client/runtime/library.js:121:6307)
+    at async l (/Users/rafkiyuda/Documents/Source/codequest-hackathon-platform/backend/node_modules/@prisma/client/runtime/library.js:130:9633)
+    at async Promise.all (index 4)
+    at async /Users/rafkiyuda/Documents/Source/codequest-hackathon-platform/backend/routes/content.js:9:61 {
+  clientVersion: '5.22.0'
+}
+Error fetching content: PrismaClientUnknownRequestError: 
+Invalid `prisma.social.findMany()` invocation in
+/Users/rafkiyuda/Documents/Source/codequest-hackathon-platform/backend/routes/content.js:14:27
+
+  11 prisma.mentor.findMany({ orderBy: { order: 'asc' } }),
+  12 prisma.prize.findMany({ orderBy: { order: 'asc' } }),
+  13 prisma.timeline.findMany({ orderBy: { order: 'asc' } }),
+→ 14 prisma.social.findMany(
+Error in connector: Error querying the database: FATAL: MaxClientsInSessionMode: max clients reached - in Session mode max clients are limited to pool_size
+    at $n.handleRequestError (/Users/rafkiyuda/Documents/Source/codequest-hackathon-platform/backend/node_modules/@prisma/client/runtime/library.js:121:7505)
+    at $n.handleAndLogRequestError (/Users/rafkiyuda/Documents/Source/codequest-hackathon-platform/backend/node_modules/@prisma/client/runtime/library.js:121:6623)
+    at $n.request (/Users/rafkiyuda/Documents/Source/codequest-hackathon-platform/backend/node_modules/@prisma/client/runtime/library.js:121:6307)
+    at async l (/Users/rafkiyuda/Documents/Source/codequest-hackathon-platform/backend/node_modules/@prisma/client/runtime/library.js:130:9633)
+    at async Promise.all (index 4)
+    at async /Users/rafkiyuda/Documents/Source/codequest-hackathon-platform/backend/routes/content.js:9:61 {
+  clientVersion: '5.22.0'
+}
+Error fetching content: PrismaClientUnknownRequestError: 
+Invalid `prisma.mentor.findMany()` invocation in
+/Users/rafkiyuda/Documents/Source/codequest-hackathon-platform/backend/routes/content.js:11:27
+
+   8 try {
+   9     const [faqs, mentors, prizes, timelines, socials] = await Promise.all([
+  10         prisma.faq.findMany({ orderBy: { order: 'asc' } }),
+→ 11         prisma.mentor.findMany(
+Error in connector: Error querying the database: FATAL: MaxClientsInSessionMode: max clients reached - in Session mode max clients are limited to pool_size
+    at $n.handleRequestError (/Users/rafkiyuda/Documents/Source/codequest-hackathon-platform/backend/node_modules/@prisma/client/runtime/library.js:121:7505)
+    at $n.handleAndLogRequestError (/Users/rafkiyuda/Documents/Source/codequest-hackathon-platform/backend/node_modules/@prisma/client/runtime/library.js:121:6623)
+    at $n.request (/Users/rafkiyuda/Documents/Source/codequest-hackathon-platform/backend/node_modules/@prisma/client/runtime/library.js:121:6307)
+    at async l (/Users/rafkiyuda/Documents/Source/codequest-hackathon-platform/backend/node_modules/@prisma/client/runtime/library.js:130:9633)
+    at async Promise.all (index 1)
+    at async /Users/rafkiyuda/Documents/Source/codequest-hackathon-platform/backend/routes/content.js:9:61 {
+  clientVersion: '5.22.0'
+}
+Error fetching content: PrismaClientUnknownRequestError: 
+Invalid `prisma.prize.findMany()` invocation in
+/Users/rafkiyuda/Documents/Source/codequest-hackathon-platform/backend/routes/content.js:12:26
+
+   9 const [faqs, mentors, prizes, timelines, socials] = await Promise.all([
+  10     prisma.faq.findMany({ orderBy: { order: 'asc' } }),
+  11     prisma.mentor.findMany({ orderBy: { order: 'asc' } }),
+→ 12     prisma.prize.findMany(
+Error in connector: Error querying the database: FATAL: MaxClientsInSessionMode: max clients reached - in Session mode max clients are limited to pool_size
+    at $n.handleRequestError (/Users/rafkiyuda/Documents/Source/codequest-hackathon-platform/backend/node_modules/@prisma/client/runtime/library.js:121:7505)
+    at $n.handleAndLogRequestError (/Users/rafkiyuda/Documents/Source/codequest-hackathon-platform/backend/node_modules/@prisma/client/runtime/library.js:121:6623)
+    at $n.request (/Users/rafkiyuda/Documents/Source/codequest-hackathon-platform/backend/node_modules/@prisma/client/runtime/library.js:121:6307)
+    at async l (/Users/rafkiyuda/Documents/Source/codequest-hackathon-platform/backend/node_modules/@prisma/client/runtime/library.js:130:9633)
+    at async Promise.all (index 2)
+    at async /Users/rafkiyuda/Documents/Source/codequest-hackathon-platform/backend/routes/content.js:9:61 {
+  clientVersion: '5.22.0'
+}
+Error fetching content: PrismaClientUnknownRequestError: 
+Invalid `prisma.mentor.findMany()` invocation in
+/Users/rafkiyuda/Documents/Source/codequest-hackathon-platform/backend/routes/content.js:11:27
+
+   8 try {
+   9     const [faqs, mentors, prizes, timelines, socials] = await Promise.all([
+  10         prisma.faq.findMany({ orderBy: { order: 'asc' } }),
+→ 11         prisma.mentor.findMany(
+Error in connector: Error querying the database: FATAL: MaxClientsInSessionMode: max clients reached - in Session mode max clients are limited to pool_size
+    at $n.handleRequestError (/Users/rafkiyuda/Documents/Source/codequest-hackathon-platform/backend/node_modules/@prisma/client/runtime/library.js:121:7505)
+    at $n.handleAndLogRequestError (/Users/rafkiyuda/Documents/Source/codequest-hackathon-platform/backend/node_modules/@prisma/client/runtime/library.js:121:6623)
+    at $n.request (/Users/rafkiyuda/Documents/Source/codequest-hackathon-platform/backend/node_modules/@prisma/client/runtime/library.js:121:6307)
+    at async l (/Users/rafkiyuda/Documents/Source/codequest-hackathon-platform/backend/node_modules/@prisma/client/runtime/library.js:130:9633)
+    at async Promise.all (index 1)
+    at async /Users/rafkiyuda/Documents/Source/codequest-hackathon-platform/backend/routes/content.js:9:61 {
+  clientVersion: '5.22.0'
+}
+Error fetching content: PrismaClientUnknownRequestError: 
+Invalid `prisma.faq.findMany()` invocation in
+/Users/rafkiyuda/Documents/Source/codequest-hackathon-platform/backend/routes/content.js:10:24
+
+   7 router.get('/', async (req, res) => {
+   8     try {
+   9         const [faqs, mentors, prizes, timelines, socials] = await Promise.all([
+→ 10             prisma.faq.findMany(
+Error in connector: Error querying the database: FATAL: MaxClientsInSessionMode: max clients reached - in Session mode max clients are limited to pool_size
+    at $n.handleRequestError (/Users/rafkiyuda/Documents/Source/codequest-hackathon-platform/backend/node_modules/@prisma/client/runtime/library.js:121:7505)
+    at $n.handleAndLogRequestError (/Users/rafkiyuda/Documents/Source/codequest-hackathon-platform/backend/node_modules/@prisma/client/runtime/library.js:121:6623)
+    at $n.request (/Users/rafkiyuda/Documents/Source/codequest-hackathon-platform/backend/node_modules/@prisma/client/runtime/library.js:121:6307)
+    at async l (/Users/rafkiyuda/Documents/Source/codequest-hackathon-platform/backend/node_modules/@prisma/client/runtime/library.js:130:9633)
+    at async Promise.all (index 0)
+    at async /Users/rafkiyuda/Documents/Source/codequest-hackathon-platform/backend/routes/content.js:9:61 {
+  clientVersion: '5.22.0'
+}
+Error fetching content: PrismaClientUnknownRequestError: 
+Invalid `prisma.faq.findMany()` invocation in
+/Users/rafkiyuda/Documents/Source/codequest-hackathon-platform/backend/routes/content.js:10:24
+
+   7 router.get('/', async (req, res) => {
+   8     try {
+   9         const [faqs, mentors, prizes, timelines, socials] = await Promise.all([
+→ 10             prisma.faq.findMany(
+Error in connector: Error querying the database: FATAL: MaxClientsInSessionMode: max clients reached - in Session mode max clients are limited to pool_size
+    at $n.handleRequestError (/Users/rafkiyuda/Documents/Source/codequest-hackathon-platform/backend/node_modules/@prisma/client/runtime/library.js:121:7505)
+    at $n.handleAndLogRequestError (/Users/rafkiyuda/Documents/Source/codequest-hackathon-platform/backend/node_modules/@prisma/client/runtime/library.js:121:6623)
+    at $n.request (/Users/rafkiyuda/Documents/Source/codequest-hackathon-platform/backend/node_modules/@prisma/client/runtime/library.js:121:6307)
+    at async l (/Users/rafkiyuda/Documents/Source/codequest-hackathon-platform/backend/node_modules/@prisma/client/runtime/library.js:130:9633)
+    at async Promise.all (index 0)
+    at async /Users/rafkiyuda/Documents/Source/codequest-hackathon-platform/backend/routes/content.js:9:61 {
+  clientVersion: '5.22.0'
+}
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `node index.js`[39m
+[dotenv@17.2.4] injecting env (5) from .env -- tip: 🛠️  run anywhere with `dotenvx run -- yourcommand`
+Server listening on http://localhost:5001

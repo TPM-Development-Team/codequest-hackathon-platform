@@ -66,6 +66,7 @@ import StepLeaderNonBinusian from "../components/register/StepLeaderNonBinusian.
 
   <script is:inline>
     document.addEventListener("DOMContentLoaded", () => {
+      const form = document.getElementById("registerForm");
       const stepGroup = document.getElementById("stepGroup");
       const stepLeaderBinusian = document.getElementById("stepLeaderBinusian");
       const stepLeaderNonBinusian = document.getElementById("stepLeaderNonBinusian");
@@ -77,11 +78,12 @@ import StepLeaderNonBinusian from "../components/register/StepLeaderNonBinusian.
 
       const password = document.getElementById("password");
       const confirmPassword = document.getElementById("confirmPassword");
-
       const togglePassword = document.getElementById("togglePassword");
       const toggleConfirmPassword = document.getElementById("toggleConfirmPassword");
       const eyeIcon = document.getElementById("eye-icon-content");
       const eyeIconConfirm = document.getElementById("eye-icon-content-confirm");
+
+      let currentStep = 1;
 
       function setupToggle(button, input, icon) {
         if (!button || !input || !icon) return;
@@ -102,6 +104,7 @@ import StepLeaderNonBinusian from "../components/register/StepLeaderNonBinusian.
       }
 
       function showStep(step) {
+        currentStep = step;
         if (step === 1) {
           stepGroup.classList.remove("hidden");
           stepLeaderBinusian.classList.add("hidden");
@@ -128,22 +131,99 @@ import StepLeaderNonBinusian from "../components/register/StepLeaderNonBinusian.
         }
       }
 
+      function validateStep1() {
+        const groupName = document.getElementById("groupName");
+        const groupError = document.getElementById("groupNameError");
+        const passError = document.getElementById("passwordError");
+        const confirmError = document.getElementById("confirmPasswordError");
+
+        let isValid = true;
+        if (!groupName.value.trim()) {
+          groupError.textContent = "Group name is required";
+          isValid = false;
+        } else {
+          groupError.textContent = "";
+        }
+
+        if (password.value.length < 8) {
+          passError.textContent = "Password must be at least 8 characters";
+          isValid = false;
+        } else {
+          passError.textContent = "";
+        }
+
+        if (confirmPassword.value !== password.value) {
+          confirmError.textContent = "Passwords do not match";
+          isValid = false;
+        } else {
+          confirmError.textContent = "";
+        }
+
+        return isValid;
+      }
+
       identitySelect.addEventListener("change", () => {
-        if (!stepGroup.classList.contains("hidden")) return;
+        if (currentStep === 1) return;
         updateLeaderType();
       });
 
       nextBtn.addEventListener("click", (e) => {
         e.preventDefault();
-        showStep(2);
+        if (validateStep1()) {
+          showStep(2);
+        }
       });
 
       stepDot1.addEventListener("click", () => showStep(1));
-      stepDot2.addEventListener("click", () => showStep(2));
+      stepDot2.addEventListener("click", () => {
+        if (validateStep1()) showStep(2);
+      });
 
-      document.getElementById("registerForm").addEventListener("submit", (e) => {
+      form.addEventListener("submit", async (e) => {
         e.preventDefault();
-        alert("Registration feature coming soon!");
+        
+        const activePanel = identitySelect.value === "Binusian" ? stepLeaderBinusian : stepLeaderNonBinusian;
+        
+        const payload = {
+          groupName: document.getElementById("groupName").value,
+          password: password.value,
+          status: identitySelect.value.toLowerCase(),
+          fullName: activePanel.querySelector("#leaderFullName").value,
+          email: activePanel.querySelector("#leaderEmail").value,
+          whatsappNumber: activePanel.querySelector("#leaderWhatsapp").value,
+          lineId: activePanel.querySelector("#leaderLineId").value,
+          githubId: activePanel.querySelector("#leaderGithub").value,
+          birthPlace: activePanel.querySelector("#leaderBirthPlace").value,
+          birthDate: `${activePanel.querySelector("#leaderBirthYear").value}-${activePanel.querySelector("#leaderBirthMonth").value}-${activePanel.querySelector("#leaderBirthDay").value}`,
+          cvUrl: "http://example.com/cv.pdf",
+          idCardUrl: "http://example.com/id.jpg"
+        };
+
+        try {
+          registerBtn.disabled = true;
+          registerBtn.textContent = "Processing...";
+
+          const res = await fetch("http://localhost:5001/api/auth/register", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(payload)
+          });
+
+          const result = await res.json();
+          
+          if (res.ok) {
+            alert("Registration successful!");
+            window.location.href = "/login";
+          } else {
+            alert("Error: " + result.message);
+          }
+        } catch (err) {
+          console.error(err);
+          alert("Connection error to backend");
+        } finally {
+          registerBtn.disabled = false;
+          registerBtn.textContent = "Sign Up";
+        }
       });
 
       showStep(1);

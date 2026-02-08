@@ -2,68 +2,40 @@
 import { Image } from "astro:assets";
 import gallery_wall from "../../assets/gallery_wall.png";
 
-const mentors = [
-  {
-    name: "Mentor I",
-    title: "King of Spain",
-    position: { top: "40%", left: "0%", width: "13%", height: "25%" },
-  },
-  {
-    name: "Mentor II",
-    title: "King Haakon VII of Norway",
-    position: { top: "18%", left: "15%", width: "10%", height: "32%" },
-  },
-  {
-    name: "Mentor III",
-    title: "Tsar Ferdinand of the Bulgarians",
-    position: { top: "58%", left: "15%", width: "10%", height: "32%" },
-  },
-  {
-    name: "Mentor IV",
-    title: "King Manuel II of Portugal",
-    position: { top: "70%", left: "29%", width: "12%", height: "30%" },
-  },
-  {
-    name: "Mentor V",
-    title: "Kaiser of Germany",
-    position: { top: "0%", left: "43%", width: "12%", height: "30%" },
-  },
-  {
-    name: "Mentor VI",
-    title: "King George I of the Hellenes",
-    position: { top: "70%", left: "59%", width: "12%", height: "30%" },
-  },
-  {
-    name: "Mentor VII",
-    title: "King Albert I of the Belgians",
-    position: { top: "15%", left: "75%", width: "10%", height: "32%" },
-  },
-  {
-    name: "Mentor VIII",
-    title: "King Frederick VIII of Denmark",
-    position: { top: "55%", left: "75%", width: "10%", height: "32%" },
-  },
-  {
-    name: "Mentor IX",
-    title: "King George V of the United Kingdom",
-    position: { top: "32%", left: "87%", width: "13%", height: "30%" },
-  },
-  {
-    name: "Jury I",
-    title: "Alexander the Great",
-    position: { top: "13%", left: "29%", width: "12%", height: "55%" },
-  },
-  {
-    name: "Jury II",
-    title: "Holy Roman Emperor Charles V",
-    position: { top: "35%", left: "44%", width: "12%", height: "55%" },
-  },
-  {
-    name: "Jury III",
-    title: "Thutmose of Egypt",
-    position: { top: "13%", left: "59%", width: "11%", height: "55%" },
-  },
+const { mentors: propsMentors } = Astro.props;
+let backendMentors = propsMentors || [];
+
+if (backendMentors.length === 0) {
+  try {
+    const response = await fetch("http://localhost:5001/api/content");
+    if (response.ok) {
+      const data = await response.json();
+      backendMentors = data.mentors || [];
+    }
+  } catch (error) {
+    console.error("Error fetching Mentors content:", error);
+  }
+}
+
+const positions = [
+  { top: "40%", left: "0%", width: "13%", height: "25%" },
+  { top: "18%", left: "15%", width: "10%", height: "32%" },
+  { top: "58%", left: "15%", width: "10%", height: "32%" },
+  { top: "70%", left: "29%", width: "12%", height: "30%" },
+  { top: "0%", left: "43%", width: "12%", height: "30%" },
+  { top: "70%", left: "59%", width: "12%", height: "30%" },
+  { top: "15%", left: "75%", width: "10%", height: "32%" },
+  { top: "55%", left: "75%", width: "10%", height: "32%" },
+  { top: "32%", left: "87%", width: "13%", height: "30%" },
+  { top: "13%", left: "29%", width: "12%", height: "55%" },
+  { top: "35%", left: "44%", width: "12%", height: "55%" },
+  { top: "13%", left: "59%", width: "11%", height: "55%" },
 ];
+
+const mentors = backendMentors.map((m, i) => ({
+  ...m,
+  position: positions[i] || { top: "0%", left: "0%", width: "0%", height: "0%" }
+}));
 ---
 
 <div class="gallery-container" id="mentors">

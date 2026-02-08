@@ -79,9 +79,11 @@ async function main() {
 
     // 5. Socials
     const socials = [
-        { name: "Instagram TS", account: "@technoscapebncc", url: "https://instagram.com/technoscapebncc", order: 1 },
-        { name: "Gmail", account: "technoscape@bncc.net", url: "mailto:technoscape@bncc.net", order: 2 },
-        { name: "Instagram BNCC", account: "@BNCC_Binus", url: "https://instagram.com/BNCC_Binus", order: 3 }
+        { name: "instagram", account: "@technoscapebncc", url: "https://instagram.com/technoscapebncc", order: 1 },
+        { name: "gmail", account: "technoscape@bncc.net", url: "mailto:technoscape@bncc.net", order: 2 },
+        { name: "instagram", account: "@BNCC_Binus", url: "https://instagram.com/BNCC_Binus", order: 3 },
+        { name: "linkedin", account: "@bina.nusantara.computer.club", url: "https://linkedin.com/company/bina.nusantara.computer.club", order: 4 },
+        { name: "twitter", account: "@bnccbinus", url: "https://twitter.com/bnccbinus", order: 5 }
     ];
 
     for (const s of socials) {

@@ -3,38 +3,20 @@ import { Image } from "astro:assets";
 import text_bubble from "../../assets/text_bubble.png";
 import down_arrow from "../../assets/chevron-down.svg";
 
-const questions = [
-  {
-    question: "Q: What are the themes for this hackathon?",
-    answer:
-      "A: Social Impact, Fintech & Business, Future Tech, and Creative Design",
-  },
-  {
-    question: "Q: What are the themes for this hackathon?",
-    answer:
-      "A: Social Impact, Fintech & Business, Future Tech, and Creative Design",
-  },
-  {
-    question: "Q: What are the themes for this hackathon?",
-    answer:
-      "A: Social Impact, Fintech & Business, Future Tech, and Creative Design",
-  },
-  {
-    question: "Q: What are the themes for this hackathon?",
-    answer:
-      "A: Social Impact, Fintech & Business, Future Tech, and Creative Design",
-  },
-  {
-    question: "Q: What are the themes for this hackathon?",
-    answer:
-      "A: Social Impact, Fintech & Business, Future Tech, and Creative Design",
-  },
-  {
-    question: "Q: What are the themes for this hackathon?",
-    answer:
-      "A: Social Impact, Fintech & Business, Future Tech, and Creative Design",
-  },
-];
+const { faqs } = Astro.props;
+let questions = faqs || [];
+
+if (questions.length === 0) {
+  try {
+    const response = await fetch("http://localhost:5001/api/content");
+    if (response.ok) {
+      const data = await response.json();
+      questions = data.faqs || [];
+    }
+  } catch (error) {
+    console.error("Error fetching FAQ content:", error);
+  }
+}
 ---
 
 <div class="faq" id="faq">
