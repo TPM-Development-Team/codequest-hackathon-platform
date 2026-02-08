@@ -11,9 +11,12 @@ const contentRoutes = require('./routes/content');
 const app = express();
 const PORT = process.env.PORT || 5001;
 
+const path = require('path');
+
 // Middlewares
 app.use(cors());
 app.use(express.json());
+app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
 // Routes
 app.use('/api/auth', authRoutes);
