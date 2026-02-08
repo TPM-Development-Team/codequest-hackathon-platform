@@ -1,49 +1,86 @@
 ---
-import Login from "../components/login/Login.astro";
 import "../styles/login-register.css";
+import background from "../assets/background_kursi_kerajaan.png";
+import logo from "../assets/logo.png";
+import paperScroll from "../assets/paper_scroll.png";
+import LoginForm from "../components/login/Login.astro";
 ---
 
 <!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <title>Log in</title>
-  </head>
-
-  <body>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Log in | Code Quest</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Pixelify+Sans&display=swap"
-      rel="stylesheet"
-    />
+    <link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400;700&display=swap" rel="stylesheet" />
+  </head>
 
-    <main class="register-container">
-      <h1>Log In</h1>
+  <body class="h-screen">
+    <!-- BACKGROUND IMAGE -->
+    <div class="background-container">
+      <img 
+        src={background.src} 
+        alt="Background" 
+        class="background-img"
+      />
+    </div>
 
-      <form class="register-form" id="loginForm">
-        <Login />
-        <button type="submit" class="submit-btn">Log In</button>
-        <p class="switch-auth">
-          Don't have an account?
-          <a href="/auth/register">Sign Up</a>
-        </p>
-      </form>
+    <!-- HEADER WITH WHITE BAR -->
+    <header class="logo-header fade-down">
+      <img src={logo.src} alt="Code Quest Logo" class="intro-logo" />
+    </header>
+
+    <main class="auth-wrapper">
+      <!-- SCROLL CONTAINER -->
+      <div class="scroll-content h-screen fade-up">
+        <!-- Paper Scroll Background -->
+        <img 
+          src={paperScroll.src} 
+          alt="Scroll Background" 
+          class="scroll-bg"
+        />
+        
+        <div class="scroll-content">
+           <h1 class="login-title">LOGIN</h1>
+           
+           <h2 class="section-title">Login to your account</h2>
+
+           <form class="login-form w-full" id="loginForm" autocomplete="off">
+             <LoginForm />
+             
+             <button type="submit" class="submit-btn" id="loginBtn">Login</button>
+             
+             <p class="switch-auth">
+               Don’t have an account?
+               <a href="/auth/register">Sign Up</a>
+             </p>
+           </form>
+        </div>
+      </div>
     </main>
   </body>
 
-  <!-- ✅ SCRIPT HARUS DI BAWAH -->
   <script is:inline>
     document.addEventListener("DOMContentLoaded", () => {
       const form = document.getElementById("loginForm");
-
       const groupName = document.getElementById("groupName");
       const password = document.getElementById("password");
-      const confirmPassword = document.getElementById("confirmPassword");
-
       const groupError = document.getElementById("groupError");
       const passwordError = document.getElementById("passwordError");
-      const confirmError = document.getElementById("confirmError");
+      const toggleBtn = document.getElementById('togglePassword');
+      const eyeIconSpan = document.getElementById('eye-icon-content');
+
+      // Toggle Password Visibility
+      if (toggleBtn) {
+        toggleBtn.addEventListener('click', () => {
+          const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
+          password.setAttribute('type', type);
+          // Toggle between two icons/emojis
+          eyeIconSpan.textContent = type === 'password' ? '👁️‍🗨️' : '👁️';
+        });
+      }
 
       function validateGroupName() {
         if (!groupName.value.trim()) {
@@ -55,15 +92,15 @@ import "../styles/login-register.css";
       }
 
       function validatePassword() {
-        if (password.value.length < 8) {
-          passwordError.textContent =
-            "Minimum 8 characters, including uppercase and lowercase letters, numbers, and symbols";
-          return false;
+        if (password.value.length < 1) {
+           passwordError.textContent = "Password cannot be empty";
+           return false;
         }
         passwordError.textContent = "";
         return true;
       }
 
+<<<<<<< HEAD
       function validateConfirmPassword() {
         if (!confirmPassword.value.trim()) {
           confirmError.textContent = "Confirm password cannot be empty";
@@ -77,6 +114,10 @@ import "../styles/login-register.css";
         return true;
       }
 
+=======
+      // Realtime validation
+      groupName.addEventListener("input", validateGroupName);
+>>>>>>> main
       password.addEventListener("input", validatePassword);
 
       form.addEventListener("submit", async (e) => {
@@ -84,6 +125,7 @@ import "../styles/login-register.css";
 
         const isGroupValid = validateGroupName();
         const isPasswordValid = validatePassword();
+<<<<<<< HEAD
 
         if (isGroupValid && isPasswordValid) {
           try {
@@ -118,6 +160,16 @@ import "../styles/login-register.css";
             btn.disabled = false;
             btn.textContent = "Log In";
           }
+=======
+  
+        if (isGroupValid && isPasswordValid) {
+          console.log("Logging in with:", {
+            groupName: groupName.value,
+            password: password.value
+          });
+          // Add your actual login logic here
+          alert("Login feature coming soon!");
+>>>>>>> main
         }
       });
     });

@@ -1,35 +1,42 @@
-<section>
-  <h2>Group Information</h2>
+<div class="step-panel" id="stepGroup">
+  <h2 class="section-title">Group Information</h2>
 
   <div class="form-group">
-    <label>Group Name</label>
-    <input type="text" id="groupName" placeholder="Enter your group name" />
-    <small class="error-text" id="groupError"></small>
+    <label for="groupName">Group Name</label>
+    <input type="text" id="groupName" name="groupName" class="pixel-input" placeholder="Enter group name" />
+    <div class="error-text" id="groupNameError"></div>
   </div>
 
   <div class="form-group">
     <label for="password">Password</label>
-    <input type="password" id="password" placeholder="Enter your password" />
-    <small id="passwordError" class="error-text"></small>
+    <div class="password-wrapper">
+      <input type="password" id="password" name="password" class="pixel-input" placeholder="Create password" />
+      <button type="button" class="eye-icon" id="togglePassword">
+        <span id="eye-icon-content">👁️‍🗨️</span>
+      </button>
+    </div>
+    <div class="error-text" id="passwordError"></div>
   </div>
 
   <div class="form-group">
-    <label>Confirm Password</label>
-    <input
-      type="password"
-      id="confirmPassword"
-      placeholder="Confirm your password"
-    />
-    <small id="confirmError" class="error-text"></small>
+    <label for="confirmPassword">Confirm Password</label>
+    <div class="password-wrapper">
+      <input type="password" id="confirmPassword" name="confirmPassword" class="pixel-input" placeholder="Confirm password" />
+      <button type="button" class="eye-icon" id="toggleConfirmPassword">
+        <span id="eye-icon-content-confirm">👁️‍🗨️</span>
+      </button>
+    </div>
+    <div class="error-text" id="confirmPasswordError"></div>
   </div>
 
   <div class="form-group">
-    <label>Status</label>
-    <select id="status">
-      <option value="" disabled selected hidden> Select status </option>
-      <option value="binusian">Binusian</option>
-      <option value="non-binusian">Non-binusian</option>
-    </select>
-    <small id="statusError" class="error-text"></small>
+    <label for="identity">Identity</label>
+    <div class="select-wrapper">
+      <select id="identity" name="identity" class="pixel-select">
+        <option value="Binusian">Binusian</option>
+        <option value="Non-Binusian">Non-Binusian</option>
+      </select>
+      <span class="dropdown-icon">▼</span>
+    </div>
   </div>
-</section>
+</div>
