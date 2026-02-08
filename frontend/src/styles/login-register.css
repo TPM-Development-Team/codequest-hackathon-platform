@@ -829,7 +829,23 @@ body {
     display: block;
   }
 }
-/* Specific override for dashboard content width to prevent overlap */
+
+
+/* Specific override for dashboard content width to prevent overlap with curved edges */
 .main-container .scroll-content {
-  width: 85%;
+  width: 65%;
+  padding: 0 40px;
+  box-sizing: border-box;
+}
+
+/* Ensure labels don't wrap too aggressively */
+.dashboard-grid {
+  gap: 20px 30px;
+}
+
+@media (max-width: 768px) {
+  .main-container .scroll-content {
+    width: 85%;
+    padding: 0 20px;
+  }
 }
