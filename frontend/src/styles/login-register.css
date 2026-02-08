@@ -1,101 +1,486 @@
-.register-container {
-  max-width: 500px;
-  margin: 40px auto;
+/* Base styles */
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  font-family: "Pixelify Sans", sans-serif;
+  background-color: #1a1a1a;
 }
 
-.form-group {
-  margin-bottom: 16px;
+.auth-wrapper {
+  position: relative;
+  min-height: 100vh;
+  width: 100%;
   display: flex;
   flex-direction: column;
-}
-
-.form-step {
-  display: none;
-}
-
-.form-step.active {
-  display: block;
-}
-
-.form-navigation {
-  display: flex;
-  justify-content: center; /* ⬅️ bikin ke tengah */
   align-items: center;
-  gap: 16px; /* jarak antar tombol */
-  margin-top: 32px;
-}
-
-.error,
-.error-text,
-.form-error {
-  color: red;
-  font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif !important;
-}
-
-.password-rules {
-  margin-top: 6px;
-  padding-left: 18px;
-  color: red;
-  font-size: 14px;
-}
-
-/* FORCE PIXELIFY KE SEMUA TEKS FORM */
-body,
-h1,
-h2,
-h3,
-label,
-p,
-span,
-input,
-select,
-option,
-button {
-  font-family: "Pixelify Sans", sans-serif !important;
-}
-
-
-.form-wrapper {
-  position: relative;
-}
-
-.form-bg {
-  width: 100%;
-  display: block;
-}
-
-.form-content {
-  position: absolute;
-  top: 0;
-  left: 0;
-
-  width: 100%;
-  height: 100%;
-
-  padding: 80px 60px;
-}
-
-.hidden {
-  display: none;
+  justify-content: center;
+  background-color: transparent; /* Changed from #000 to show background image */
+  padding-top: 100px; /* Offset for fixed header bar */
 }
 
 .login-form {
+  width: 70%;
+}
+
+.background-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  z-index: -1;
+}
+
+.background-img {
+  width: 100%;
+  height: 100vh;
+  object-fit: cover;
+}
+
+/* Header with white bar */
+.logo-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100px;
+  background: rgba(255, 255, 255, 0.4); /* WHITE semi-transparent bar */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 100;
+  backdrop-filter: blur(4px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.intro-logo {
+  height: 70px;
+  width: auto;
+}
+
+/* SCROLL CONTAINER */
+.scroll-container {
+  position: relative;
+  width: 90%;
+  max-width: 650px;
+  /* Use aspect-ratio or min-height to keep the scroll proportions */
+  min-height: 800px;
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
+  padding: 120px 0; /* Padding to keep content away from top/bottom rolls */
 }
 
-.submit-btn {
-  display: block;
-  margin: 20px auto 0;
+.scroll-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  object-fit: fill; /* Stretch paper to container */
 }
 
-.switch-auth {
-  font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif !important;
+.scroll-content {
+  position: relative;
+  z-index: 1;
+  width: 75%; /* Keep content centered */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   text-align: center;
-  margin-top: 16px;
+}
+
+.login-title {
+  font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+  font-size: 4rem; /* Larger as per figure */
+  color: #581c3c;
+  margin: 0 0 10px 0;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  padding-top: 1rem;
+}
+
+.section-title {
+  font-family: "Pixelify Sans", sans-serif;
+  font-size: 1.8rem;
+  color: #3f1818;
+  margin-bottom: 35px;
+  border-bottom: 3.5px solid #3f1818; /* Thicker underline */
+  margin-top: 5rem;
+  display: inline-block;
+  padding-bottom: 2px;
+  line-height: 1;
+}
+
+/* Form Groups */
+.form-group {
+  width: 100%;
+  margin-bottom: 24px;
+  text-align: left;
+}
+
+.form-group label {
+  display: block;
+  font-family: "Pixelify Sans", sans-serif;
+  color: #d81b60; /* Specific pink from figma */
+  font-size: 1.1rem;
+  margin-bottom: 6px;
+  font-weight: bold;
+}
+
+.pixel-input {
+  width: 100%;
+  padding: 12px 18px;
+  background-color: #d8cce4; /* Slightly lighter as per figure */
+  border: 3px solid #4a1e35;
+  border-radius: 12px;
+  outline: none;
+  font-family: "Pixelify Sans", sans-serif;
+  font-size: 1.2rem;
+  color: #4a1e35;
+  box-sizing: border-box;
+  transition: border-color 0.2s;
+}
+
+/* pixel-input for leaderBirthPlace custom width to 70% */
+.pixel-input#leaderBirthPlace {
+  width: 50%;
+}
+
+/* pixel-input for leaderBirthDay, leaderBirthMonth, leaderBirthYear custom width to 20% */
+.pixel-input#leaderBirthDay,
+.pixel-input#leaderBirthMonth {
+  width: 20%;
+}
+
+.pixel-input#leaderBirthYear {
+  width: 30%;
+}
+
+/* Multi input row (Birth Place and Date) */
+.multi-input-row {
+  display: flex;
+  gap: 8px;
+  width: 100%;
+}
+
+.multi-input-row > * {
+  min-width: 0;
+}
+
+/* Birth place lebih lebar */
+#leaderBirthPlace {
+  flex: 7;
+}
+
+/* Day / Month / Year lebih kecil */
+#leaderBirthDay,
+#leaderBirthMonth {
+  flex: 1;
+}
+
+#leaderBirthYear {
+  flex: 1.5;
+}
+
+.pixel-select {
+  width: 100%;
+  padding: 12px 18px;
+  padding-right: 45px; /* Extra padding untuk emoji dropdown icon */
+  background-color: #d8cce4;
+  border: 3px solid #4a1e35;
+  border-radius: 12px;
+  outline: none;
+  font-family: "Pixelify Sans", sans-serif;
+  font-size: 1.2rem;
+  color: #4a1e35;
+  box-sizing: border-box;
+  transition: border-color 0.2s;
+  appearance: none;
+  cursor: pointer;
+}
+
+.pixel-input:focus,
+.pixel-select:focus {
+  border-color: #d81b60;
+}
+
+.password-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.eye-icon {
+  position: absolute;
+  right: 18px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1.6rem;
+  color: #4a1e35;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0.7;
+}
+
+.eye-icon:hover {
+  opacity: 1;
+}
+
+.select-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.dropdown-icon {
+  position: absolute;
+  right: 18px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 1.2rem;
+  color: #4a1e35;
+  pointer-events: none;
+  opacity: 0.7;
+}
+
+/* ERROR TEXT */
+.error-text {
+  color: #b71c1c;
+  font-size: 0.9rem;
+  margin-top: 6px;
+  font-family: "Pixelify Sans", sans-serif;
+  min-height: 1.2rem;
+}
+
+/* SUBMIT BUTTON */
+.submit-btn {
+  background: linear-gradient(
+    to bottom,
+    #d441a1,
+    #b52c8b
+  ); /* High quality pink gradient */
+  color: white;
+  border: 4px solid #4a1e35;
+  border-bottom-width: 8px; /* High quality depth effect */
+  padding: 10px 45px;
+  font-size: 2.5rem;
+  border-radius: 15px;
+  cursor: pointer;
+  font-family: "Pixelify Sans", sans-serif;
+  margin-top: 25px;
+  transition: all 0.1s;
+  box-shadow: 0 6px 0 rgba(0, 0, 0, 0.2);
+  text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.2);
+}
+
+.submit-btn:hover {
+  background: linear-gradient(to bottom, #e452b1, #c53c9b);
+}
+
+.submit-btn:active {
+  border-bottom-width: 4px;
+  transform: translateY(4px);
+  box-shadow: 0 2px 0 rgba(0, 0, 0, 0.2);
+}
+
+/* SWITCH AUTH */
+.switch-auth {
+  font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+  margin-top: 1rem;
+  margin-bottom: 2rem;
+  font-size: 1.1rem;
+  color: #333;
 }
 
 .switch-auth a {
-  font-family: inherit !important;
+  color: #000;
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+.step-panel {
+  width: 100%;
+}
+
+.hidden {
+  display: none !important;
+}
+
+.leader-type {
+  font-family: "Pixelify Sans", sans-serif;
+  font-size: 1.2rem;
+  color: #8a2a6a;
+  margin-bottom: 24px;
+  border: 2px solid #8a2a6a;
+  padding: 6px 14px;
+  border-radius: 999px;
+}
+
+.button-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  margin-top: 25px;
+  flex-wrap: wrap;
+}
+
+.secondary-btn {
+  background: linear-gradient(to bottom, #f1e6f5, #d7c0e4);
+  color: #4a1e35;
+  border: 4px solid #4a1e35;
+  border-bottom-width: 7px;
+  padding: 10px 32px;
+  font-size: 1.8rem;
+  border-radius: 15px;
+  cursor: pointer;
+  font-family: "Pixelify Sans", sans-serif;
+  transition: all 0.1s;
+  box-shadow: 0 5px 0 rgba(0, 0, 0, 0.2);
+  text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.1);
+}
+
+.secondary-btn:hover {
+  background: linear-gradient(to bottom, #f7effa, #dfcbe8);
+}
+
+.secondary-btn:active {
+  border-bottom-width: 4px;
+  transform: translateY(3px);
+  box-shadow: 0 2px 0 rgba(0, 0, 0, 0.2);
+}
+
+/* Animations */
+.fade-down {
+  animation: fadeDown 0.8s ease-out forwards;
+}
+
+.fade-up {
+  animation: fadeUp 0.8s ease-out forwards;
+}
+
+@keyframes fadeDown {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Custom File Upload */
+.file-upload-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.file-upload-input {
+  width: 100%;
+  background-color: #d1c0e0;
+  border: 3.5px solid #4a1e35;
+  border-radius: 10px;
+  font-family: "Pixelify Sans", sans-serif;
+  font-size: 1.1rem;
+  color: #4a1e35;
+  cursor: pointer;
+  text-align: left;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding: 12px 0px;
+}
+
+.file-upload-icon {
+  position: absolute;
+  right: 18px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 1.2rem;
+  color: #4a1e35;
+  pointer-events: none;
+}
+
+/* Stepper Indicator */
+.stepper-indicator {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 40px;
+  position: relative;
+  z-index: 1;
+}
+
+.stepper-indicator::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 60px;
+  height: 2px;
+  background-color: #b28ba3;
+  z-index: -1;
+}
+
+.step-dot {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background-color: #fff;
+  border: 2px solid #b24e82;
+  color: #b24e82;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Pixelify Sans", sans-serif;
+  font-weight: bold;
+  font-size: 18px;
+  transition: all 0.3s;
+  position: relative;
+  z-index: 2;
+  cursor: pointer;
+  padding: 0;
+}
+
+.step-dot.active {
+  background-color: #b24e82;
+  border-color: #b24e82;
+  color: #fff;
+}
+
+.step-dot.completed {
+  background-color: #fff;
+  border-color: #b24e82;
+  color: #b24e82;
+}
+
+.step-dot:focus-visible {
+  outline: 3px solid rgba(216, 27, 96, 0.6);
+  outline-offset: 3px;
+}
+
+.h-screen {
+  height: 100vh;
 }
