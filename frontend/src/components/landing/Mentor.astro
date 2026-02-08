@@ -142,4 +142,66 @@ const mentors = backendMentors.map((m, i) => ({
   .mentor-info p {
     margin: 0;
   }
+
+  @media (max-width: 768px) {
+    .gallery-container {
+      position: relative;
+      top: 0;
+      height: auto;
+      padding: 4rem 0;
+      margin-bottom: 2rem;
+    }
+
+    .gallery-container h1 {
+      font-size: 2.5rem;
+      margin-bottom: 2rem;
+    }
+
+    /* Hide the wall image on mobile to simplify layout */
+    .gallery-image {
+      display: none;
+    }
+
+    .image-wrapper {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+        width: 80%;
+    }
+
+    .hotspot {
+      position: relative !important;
+      top: auto !important;
+      left: auto !important;
+      width: 100% !important;
+      height: auto !important;
+      background: rgba(0, 0, 0, 0.7);
+      border: 3px solid #f7d028;
+      border-radius: 12px;
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+    }
+
+    .mentor-info {
+        position: relative;
+        opacity: 1;
+        pointer-events: auto;
+        white-space: normal;
+    }
+    
+    .mentor-info h3 {
+        font-size: 1.4rem;
+        margin-bottom: 0.5rem;
+        line-height: 1.2;
+    }
+
+    .mentor-info p {
+        font-size: 0.9rem;
+        color: #ddd;
+    }
+  }
 </style>

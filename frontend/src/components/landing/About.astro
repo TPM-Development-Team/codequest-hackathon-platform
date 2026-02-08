@@ -64,4 +64,28 @@
     font-size: 1.2rem;
     text-align: center;
   }
+
+  @media (max-width: 768px) {
+    .about {
+      position: relative; /* Switch to natural flow */
+      top: 0;
+      height: auto;
+      padding: 4rem 0;
+      gap: 1.5rem;
+      margin-top: 0; 
+      margin-bottom: 2rem;
+    }
+
+    .about h1 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .vision,
+    .mission {
+      width: 90%;
+      font-size: 1.1rem;
+      line-height: 1.4;
+    }
+  }
 </style>

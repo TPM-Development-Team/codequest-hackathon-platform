@@ -111,4 +111,44 @@ const socials = backendSocials.map((s, i) => ({
     margin: 0;
     font-size: 1.1rem;
   }
+
+  @media (max-width: 768px) {
+    .social-container {
+      position: relative;
+      top: 0;
+      height: auto;
+      padding: 4rem 0;
+      margin-bottom: 4rem; /* Bottom spacing */
+    }
+
+    .social-container h1 {
+      font-size: 2.5rem;
+      margin-bottom: 2rem;
+    }
+
+    .image-wrapper {
+      position: relative;
+      width: 100%;
+      height: auto;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 2rem;
+    }
+
+    .social-item {
+      position: relative;
+      top: auto !important;
+      left: auto !important;
+      width: 45%; 
+      margin-bottom: 1rem;
+      white-space: normal;
+      text-align: center;
+    }
+    
+    .social-item h3 {
+        font-size: 0.9rem;
+        word-break: break-word;
+    }
+  }
 </style>

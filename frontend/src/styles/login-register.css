@@ -844,8 +844,75 @@ body {
 }
 
 @media (max-width: 768px) {
+
+  /* Existing Dashboard Logic */
   .main-container .scroll-content {
     width: 85%;
     padding: 0 20px;
+  }
+
+  /* Landing Page / Shared Logic */
+  .background-img {
+    object-position: 75% center;
+    /* Shift slightly to show more context if needed, or just center */
+  }
+
+  /* Make scroll container fit better */
+  .scroll-container {
+    width: 95%;
+    padding: 60px 0;
+    min-height: auto;
+  }
+
+  /* Adjust internal content padding */
+  .scroll-content {
+    width: 85%;
+    padding: 20px 10px;
+  }
+
+  /* Typography Scaling */
+  .login-title {
+    font-size: 2.5rem;
+    margin-bottom: 5px;
+  }
+
+  .section-title {
+    font-size: 1.4rem;
+    margin-top: 2rem;
+    margin-bottom: 20px;
+  }
+
+  /* Inputs scaling */
+  .pixel-input,
+  .pixel-select,
+  .file-upload-input {
+    font-size: 1rem;
+    padding: 10px 14px;
+    height: auto;
+  }
+
+  .submit-btn {
+    font-size: 1.8rem;
+    padding: 8px 30px;
+    margin-top: 20px;
+  }
+
+  /* Ensure auth wrapper doesn't have huge top padding */
+  .auth-wrapper {
+    padding-top: 80px;
+  }
+
+  /* Header adjustments */
+  .logo-header {
+    height: 70px;
+  }
+
+  .intro-logo {
+    height: 50px;
+  }
+
+  /* Fix multi-input row wrapping */
+  .multi-input-row {
+    margin-bottom: 24px;
   }
 }

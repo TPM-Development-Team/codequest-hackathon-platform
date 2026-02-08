@@ -1,40 +1,30 @@
 ---
+import Layout from "../layouts/Layout.astro";
+import Navbar from "../components/landing/Navbar.astro";
+import Hero from "../components/landing/Hero.astro";
 import About from "../components/landing/About.astro";
 import Competitions from "../components/landing/Competitions.astro";
-import Faq from "../components/landing/Faq.astro";
-import Hero from "../components/landing/Hero.astro";
-import Mentor from "../components/landing/Mentor.astro";
-import Navbar from "../components/landing/Navbar.astro";
-import Prize from "../components/landing/Prize.astro";
 import Timeline from "../components/landing/Timeline.astro";
-import Login from "../components/landing/Login.astro";
-import Layout from "../layouts/Layout.astro";
-import Sponsor from "../components/landing/Sponsor.astro";
-import Social from "../components/landing/Social.astro";
+import Prize from "../components/landing/Prize.astro";
+import Mentor from "../components/landing/Mentor.astro";
+import Faq from "../components/landing/Faq.astro";
 import Contact from "../components/landing/Contact.astro";
-
-let landingData = {};
-try {
-  const response = await fetch("http://localhost:5001/api/content");
-  if (response.ok) {
-    landingData = await response.json();
-  }
-} catch (error) {
-  console.error("Error fetching landing data:", error);
-}
+import Social from "../components/landing/Social.astro";
+import Sponsor from "../components/landing/Sponsor.astro";
 ---
 
 <Layout>
   <Navbar />
-  <Hero />
-  <Competitions />
-  <About />
-  <Faq faqs={landingData.faqs} />
-  <Mentor mentors={landingData.mentors} />
-  <Prize prizes={landingData.prizes} />
-  <Timeline timelines={landingData.timelines} />
-  <Login />
-  <Sponsor />
-  <Social socials={landingData.socials} />
-  <Contact />
+  <main>
+    <Hero />
+    <About />
+    <Competitions />
+    <Timeline />
+    <Prize />
+    <Mentor />
+    <Faq />
+    <Contact />
+    <Social />
+    <Sponsor />
+  </main>
 </Layout>

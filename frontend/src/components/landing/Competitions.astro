@@ -141,6 +141,59 @@ import arrow from "../../assets/chevron-down.svg";
   #prevBtn img {
     transform: rotate(90deg);
   }
+
+  @media (max-width: 768px) {
+    .container {
+        position: relative;
+        top: 0;
+        margin-top: 5rem;
+        padding-bottom: 2rem;
+    }
+    
+    .container h1 {
+        font-size: 2.5rem;
+    }
+
+    .carousel-wrapper {
+        gap: 0.5rem;
+    }
+
+    .carousel {
+        width: 100%;
+        max-width: 300px;
+        height: 180px;
+    }
+
+    .carousel-item img {
+        height: 180px;
+        width: auto;
+    }
+
+    .nav-btn {
+        width: 40px;
+        height: 40px;
+        font-size: 1.5rem;
+    }
+
+    /* Adjust transforms for smaller screens */
+    .carousel-item[data-position="left"] {
+        transform: translateX(-100px) scale(0.7);
+        opacity: 0.5;
+    }
+
+    .carousel-item[data-position="right"] {
+        transform: translateX(100px) scale(0.7);
+        opacity: 0.5;
+    }
+
+    .carousel-item[data-position="hidden-left"] {
+        transform: translateX(-100px) scale(0.5);
+    }
+
+    .carousel-item[data-position="hidden-right"] {
+        transform: translateX(100px) scale(0.5);
+    }
+  }
 </style>
 
 <script>

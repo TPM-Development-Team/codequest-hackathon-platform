@@ -131,6 +131,38 @@ if (questions.length === 0) {
   .arrow-btn.up:hover {
     transform: rotate(180deg) scale(1.1);
   }
+
+  @media (max-width: 768px) {
+    .faq {
+      position: relative;
+      top: 0;
+      height: auto;
+      padding: 4rem 0;
+      margin-bottom: 2rem;
+    }
+
+    .faq h1 {
+      font-size: 2.5rem;
+      margin-bottom: 2rem;
+    }
+
+    .grid {
+      grid-template-columns: 1fr;
+      width: 90%;
+      gap: 2rem;
+    }
+
+    .text_bubble {
+        transform: scale(0.95);
+        margin: 0;
+        width: 100%;
+    }
+
+    .question, .answer {
+        font-size: 1rem;
+        padding: 0 1rem;
+    }
+  }
 </style>
 
 <script>

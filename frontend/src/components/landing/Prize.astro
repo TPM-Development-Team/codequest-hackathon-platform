@@ -122,4 +122,54 @@ const prizes = backendPrizes.map((p, i) => ({
   .hotspot:hover .prize-info p {
     opacity: 1;
   }
+
+  @media (max-width: 768px) {
+    .prize-container {
+      position: relative;
+      top: 0;
+      height: auto;
+      padding: 4rem 0;
+      margin-bottom: 2rem;
+    }
+    
+    .prize-container h1 {
+      font-size: 2.5rem;
+      margin-bottom: 2rem;
+      margin-top: 10rem; /* Space from previous section */
+    }
+
+    .image-wrapper {
+      width: 100%;
+      height: auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .hotspot {
+      position: relative !important;
+      top: auto !important;
+      left: auto !important;
+      width: 80% !important;
+      height: 150px !important; /* Smaller height for cards */
+      border: 4px solid #f7d028; /* Add border to mimic frame */
+      border-radius: 10px;
+      background: rgba(0,0,0,0.5); /* Background for readability */
+    }
+    
+    .prize-info {
+        position: relative;
+        height: 100%;
+    }
+
+    .prize-info h3 {
+        font-size: 1.5rem;
+    }
+
+    .prize-info p {
+      opacity: 1; /* Always show prize on mobile */
+      font-size: 1.1rem;
+    }
+  }
 </style>

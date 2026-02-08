@@ -123,4 +123,53 @@ const timeline = backendTimeline.map((t, i) => ({
   .hotspot:hover .prize-info p {
     opacity: 1;
   }
+
+  @media (max-width: 768px) {
+    .timeline-container {
+      position: relative;
+      top: 0;
+      height: auto;
+      padding: 4rem 0;
+      margin-bottom: 2rem;
+    }
+
+    .timeline-container h1 {
+      font-size: 2.5rem;
+      margin-bottom: 2rem;
+    }
+
+    .image-wrapper {
+      width: 100%;
+      height: auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.5rem;
+    }
+
+    .hotspot {
+      position: relative !important;
+      top: auto !important;
+      left: auto !important;
+      width: 80% !important;
+      height: 80px !important;
+      background: rgba(0, 0, 0, 0.6);
+      border: 2px solid #f7d028;
+      border-radius: 8px;
+    }
+
+    .prize-info {
+        justify-content: center;
+    }
+
+    .prize-info h3 {
+        font-size: 1.2rem;
+    }
+
+    .prize-info p {
+        opacity: 1;
+        font-size: 1rem;
+        white-space: normal;
+    }
+  }
 </style>
