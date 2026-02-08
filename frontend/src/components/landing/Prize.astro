@@ -1,21 +1,30 @@
 ---
-const prizes = [
-  {
-    rank: "1st",
-    prize: "Rp 8 million",
-    position: { top: "13%", left: "39%", width: "25%", height: "55%" },
-  },
-  {
-    rank: "2nd",
-    prize: "Rp 2 million",
-    position: { top: "20%", left: "7%", width: "25%", height: "55%" },
-  },
-  {
-    rank: "3rd",
-    prize: "Rp 0.8 million",
-    position: { top: "20%", left: "72%", width: "25%", height: "55%" },
-  },
+const { prizes: propsPrizes } = Astro.props;
+let backendPrizes = propsPrizes || [];
+
+if (backendPrizes.length === 0) {
+  try {
+    const response = await fetch("http://localhost:5001/api/content");
+    if (response.ok) {
+      const data = await response.json();
+      backendPrizes = data.prizes || [];
+    }
+  } catch (error) {
+    console.error("Error fetching Prizes content:", error);
+  }
+}
+
+const positions = [
+  { top: "13%", left: "39%", width: "25%", height: "55%" },
+  { top: "20%", left: "7%", width: "25%", height: "55%" },
+  { top: "20%", left: "72%", width: "25%", height: "55%" },
 ];
+
+const prizes = backendPrizes.map((p, i) => ({
+  rank: p.rank,
+  prize: p.reward,
+  position: positions[i] || { top: "0%", left: "0%", width: "0%", height: "0%" }
+}));
 ---
 
 <div class="prize-container" id="prize">

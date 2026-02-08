@@ -375,11 +375,51 @@ import "../styles/login-register.css";
             return isValid;
           }
 
-          submitBtn.addEventListener("click", (e) => {
+          submitBtn.addEventListener("click", async (e) => {
             if (!validateStep2()) {
               e.preventDefault();
-            } else {
-              console.log("✅ Step 2 valid, form can submit");
+              return;
+            }
+
+            const payload = {
+              groupName: document.getElementById("groupName").value,
+              password: passwordInput.value,
+              status: statusSelect.value,
+              fullName: document.getElementById("fullName").value,
+              email: document.getElementById("email").value,
+              whatsappNumber: document.getElementById("whatsappNumber").value,
+              lineId: document.getElementById("lineId").value,
+              githubId: document.getElementById("github").value,
+              birthPlace: document.getElementById("birthPlace").value,
+              birthDate: document.getElementById("birthDate").value,
+              cvUrl: "http://example.com/cv.pdf", // Placeholder
+              idCardUrl: "http://example.com/id.jpg" // Placeholder
+            };
+
+            try {
+              submitBtn.disabled = true;
+              submitBtn.textContent = "Processing...";
+
+              const res = await fetch("http://localhost:5001/api/auth/register", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(payload)
+              });
+
+              const result = await res.json();
+              
+              if (res.ok) {
+                alert("Registration successful!");
+                window.location.href = "/login";
+              } else {
+                alert("Error: " + result.message);
+              }
+            } catch (err) {
+              console.error(err);
+              alert("Connection error to backend");
+            } finally {
+              submitBtn.disabled = false;
+              submitBtn.textContent = "Sign Up";
             }
           });
 

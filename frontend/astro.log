@@ -1,0 +1,79 @@
+
+> frontend@0.0.1 dev
+> astro dev
+
+21:34:26 [types] Generated 1ms
+21:34:26 [content] Syncing content
+21:34:26 [content] Synced content
+
+ astro  v5.16.6 ready in 252 ms
+
+┃ Local    http://localhost:4321/
+┃ Network  use --host to expose
+
+21:34:26 watching for file changes...
+21:34:28 [200] / 76ms
+21:34:30 [ERROR] Cannot read properties of undefined (reading 'map')
+  Stack trace:
+    at /Users/rafkiyuda/Documents/Source/codequest-hackathon-platform/frontend/src/components/landing/Prize.astro:12:30
+    [...] See full stack trace in the browser, or rerun with --verbose.
+21:34:32 [200] / 48ms
+21:34:34 [ERROR] Cannot read properties of undefined (reading 'map')
+  Stack trace:
+    at /Users/rafkiyuda/Documents/Source/codequest-hackathon-platform/frontend/src/components/landing/Social.astro:27:32
+    [...] See full stack trace in the browser, or rerun with --verbose.
+21:47:34 [watch] src/components/landing/Faq.astro
+21:47:34 [200] / 19ms
+21:47:34 [200] / 51ms
+21:47:36 [200] /_image 406ms
+21:47:36 [200] /_image 434ms
+21:47:36 [watch] /src/components/landing/Mentor.astro?astro&type=style&index=0&lang.css
+21:47:36 [200] /_image 446ms
+21:47:36 [200] /_image 462ms
+21:47:36 [200] /_image 469ms
+21:47:36 [ERROR] Cannot read properties of undefined (reading 'map')
+  Stack trace:
+    at /Users/rafkiyuda/Documents/Source/codequest-hackathon-platform/frontend/src/components/landing/Mentor.astro:34:34
+    [...] See full stack trace in the browser, or rerun with --verbose.
+21:47:36 [200] / 23ms
+21:47:38 [watch] /src/components/landing/Prize.astro?astro&type=style&index=0&lang.css
+21:47:38 [200] / 23ms
+21:47:38 [200] / 17ms
+21:47:38 [ERROR] Cannot read properties of undefined (reading 'map')
+  Stack trace:
+    at /Users/rafkiyuda/Documents/Source/codequest-hackathon-platform/frontend/src/components/landing/Timeline.astro:14:34
+    [...] See full stack trace in the browser, or rerun with --verbose.
+21:47:40 [watch] /src/components/landing/Timeline.astro?astro&type=style&index=0&lang.css
+21:47:40 [200] / 76ms
+21:47:40 [200] / 88ms
+21:47:42 [watch] /src/components/landing/Social.astro?astro&type=style&index=0&lang.css
+21:47:42 [watch] /src/components/landing/Social.astro?astro&type=style&index=0&lang.css
+21:47:42 [200] / 43ms
+21:47:42 [200] / 47ms
+21:47:42 [200] / 15ms
+21:47:51 [200] / 11ms
+21:48:39 [200] /_image 524ms
+21:48:39 [200] /_image 2182ms
+21:48:40 [200] /_image 1782ms
+23:06:21 [200] / 1658ms
+23:06:23 [200] / 1542ms
+23:06:26 [watch] src/components/landing/Faq.astro
+23:06:27 [200] / 442ms
+23:06:27 [200] / 453ms
+23:06:28 [watch] /src/components/landing/Mentor.astro?astro&type=style&index=0&lang.css
+23:06:29 [200] / 438ms
+23:06:29 [200] / 427ms
+23:06:30 [watch] /src/components/landing/Prize.astro?astro&type=style&index=0&lang.css
+23:06:31 [200] / 432ms
+23:06:31 [200] / 520ms
+23:06:32 [watch] /src/components/landing/Timeline.astro?astro&type=style&index=0&lang.css
+23:06:33 [200] / 442ms
+23:06:33 [200] / 461ms
+23:06:34 [watch] /src/components/landing/Social.astro?astro&type=style&index=0&lang.css
+23:06:34 [watch] /src/components/landing/Social.astro?astro&type=style&index=0&lang.css
+23:06:35 [200] / 442ms
+23:06:35 [200] / 492ms
+23:06:35 [200] / 500ms
+23:06:35 [200] / 439ms
+09:08:13 [200] / 2091ms
+09:08:13 [200] / 426ms

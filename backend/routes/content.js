@@ -6,13 +6,11 @@ const router = express.Router();
 // Get all landing page content
 router.get('/', async (req, res) => {
     try {
-        const [faqs, mentors, prizes, timelines, socials] = await Promise.all([
-            prisma.faq.findMany({ orderBy: { order: 'asc' } }),
-            prisma.mentor.findMany({ orderBy: { order: 'asc' } }),
-            prisma.prize.findMany({ orderBy: { order: 'asc' } }),
-            prisma.timeline.findMany({ orderBy: { order: 'asc' } }),
-            prisma.social.findMany({ orderBy: { order: 'asc' } })
-        ]);
+        const faqs = await prisma.faq.findMany({ orderBy: { order: 'asc' } });
+        const mentors = await prisma.mentor.findMany({ orderBy: { order: 'asc' } });
+        const prizes = await prisma.prize.findMany({ orderBy: { order: 'asc' } });
+        const timelines = await prisma.timeline.findMany({ orderBy: { order: 'asc' } });
+        const socials = await prisma.social.findMany({ orderBy: { order: 'asc' } });
 
         res.json({
             faqs,

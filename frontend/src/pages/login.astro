@@ -77,20 +77,47 @@ import "../styles/login-register.css";
         return true;
       }
 
-      // realtime validation
-      groupName.addEventListener("input", validateGroupName);
       password.addEventListener("input", validatePassword);
-      confirmPassword.addEventListener("input", validateConfirmPassword);
 
-      form.addEventListener("submit", (e) => {
+      form.addEventListener("submit", async (e) => {
         e.preventDefault();
 
         const isGroupValid = validateGroupName();
         const isPasswordValid = validatePassword();
-        const isConfirmValid = validateConfirmPassword();
 
-        if (isGroupValid && isPasswordValid && isConfirmValid) {
-          alert("Login success (dummy)");
+        if (isGroupValid && isPasswordValid) {
+          try {
+            const btn = form.querySelector('button[type="submit"]');
+            btn.disabled = true;
+            btn.textContent = "Logging in...";
+
+            const res = await fetch("http://localhost:5001/api/auth/login", {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({
+                groupName: groupName.value,
+                password: password.value
+              })
+            });
+
+            const result = await res.json();
+
+            if (res.ok) {
+              localStorage.setItem("token", result.token);
+              localStorage.setItem("team", JSON.stringify(result.team));
+              alert("Login successful!");
+              window.location.href = "/dashboard";
+            } else {
+              alert("Error: " + result.message);
+            }
+          } catch (err) {
+            console.error(err);
+            alert("Connection error to backend");
+          } finally {
+            const btn = form.querySelector('button[type="submit"]');
+            btn.disabled = false;
+            btn.textContent = "Log In";
+          }
         }
       });
     });

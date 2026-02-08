@@ -5,38 +5,41 @@ import twitter from "../../assets/twitter.png";
 import gmail from "../../assets/gmail.png";
 import linkedin from "../../assets/linkedin.png";
 
-const socials = [
-  {
-    src: instagram,
-    account: "@technoscapebncc",
-    url: "https://instagram.com/technoscapebncc",
-    position: { top: "30%", left: "20%" },
-  },
-  {
-    src: gmail,
-    account: "technoscape@bncc.net",
-    url: "mailto:technoscape@bncc.net",
-    position: { top: "30%", left: "50%" },
-  },
-  {
-    src: instagram,
-    account: "@BNCC_Binus",
-    url: "https://instagram.com/BNCC_Binus",
-    position: { top: "75%", left: "10%" },
-  },
-  {
-    src: linkedin,
-    account: "@bina.nusantara.computer.club",
-    url: "https://linkedin.com/company/bina.nusantara.computer.club",
-    position: { top: "85%", left: "30%" },
-  },
-  {
-    src: twitter,
-    account: "@bnccbinus",
-    url: "https://twitter.com/bnccbinus",
-    position: { top: "75%", left: "75%" },
-  },
+const { socials: propsSocials } = Astro.props;
+let backendSocials = propsSocials || [];
+
+if (backendSocials.length === 0) {
+  try {
+    const response = await fetch("http://localhost:5001/api/content");
+    if (response.ok) {
+      const data = await response.json();
+      backendSocials = data.socials || [];
+    }
+  } catch (error) {
+    console.error("Error fetching Social content:", error);
+  }
+}
+
+const iconMap = {
+  instagram,
+  twitter,
+  gmail,
+  linkedin,
+};
+
+const positions = [
+  { top: "30%", left: "20%" },
+  { top: "30%", left: "50%" },
+  { top: "75%", left: "10%" },
+  { top: "85%", left: "30%" },
+  { top: "75%", left: "75%" },
 ];
+
+const socials = backendSocials.map((s, i) => ({
+  ...s,
+  src: iconMap[s.name.toLowerCase()] || instagram,
+  position: positions[i] || { top: "0%", left: "0%" }
+}));
 ---
 
 <div class="social-container" id="social">

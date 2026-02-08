@@ -13,7 +13,8 @@ import logo from "../../assets/logo.png";
     <a href="#mentors">Mentor & Jury</a>
     <a href="#prize">Prize</a>
     <a href="#timeline">Timeline</a>
-    <a href="#login">Login</a>
+    <a href="/login" id="loginLink">Login</a>
+    <a href="/dashboard" id="dashboardLink" class="hidden">Dashboard</a>
   </div>
 </div>
 
@@ -48,4 +49,15 @@ import logo from "../../assets/logo.png";
     color: black;
     font-family: "Pixelify Sans", sans-serif;
   }
+  .links a.hidden {
+    display: none;
+  }
 </style>
+
+<script is:inline>
+  const token = localStorage.getItem('token');
+  if (token) {
+    document.getElementById('loginLink').classList.add('hidden');
+    document.getElementById('dashboardLink').classList.remove('hidden');
+  }
+</script>
